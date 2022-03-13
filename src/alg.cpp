@@ -3,17 +3,25 @@
 int cbinsearch(int *arr, int size, int value) {
   //  поместить сюда реализацию алгоритма
   int k = 0;
-  int i = 0;
+  int i = 0; 
   int j = size - 1;
-  int middleArray = i + (j - i) / 2;
-  for (int i = 0; i <= middleArray; i++) {
-    if (arr[i] == value) {
-      k++;
+  while (i > j) {
+    int middle = (i + j) / 2;
+    if (arr[middle] == value) {
+      int mid2 = middle;
+      while (arr[--middle] == value) {
+        k++;
+      }
+      while (arr[++mid1] == value){
+        k++;
+      }
+      return k;
     }
-  }
-  for (int i = size; i > middleArray; i--) {
-    if (arr[i] == value) {
-      k++;
+    else if (arr[middle] > value) {
+      j = middle;
+    }
+    else {
+      i = middle + 1;
     }
   }
   return 0; // если ничего не найдено
