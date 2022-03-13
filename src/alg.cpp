@@ -5,16 +5,14 @@ int cbinsearch(int *arr, int size, int value) {
   int k = 0;
   int i = 0; 
   int j = size - 1;
-  while (i > j) {
+  while (i < j) {
     int middle = (i + j) / 2;
     if (arr[middle] == value) {
-      int mid2 = middle;
-      while (arr[--middle] == value) {
+      int mid1 = middle;
+      while (arr[--middle] == value)
         k++;
-      }
-      while (arr[++mid1] == value){
+      while (arr[++mid1] == value)
         k++;
-      }
       return k;
     }
     else if (arr[middle] > value) {
